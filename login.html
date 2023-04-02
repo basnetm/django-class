@@ -1,0 +1,51 @@
+{%extends 'base.html'%}
+{%block content%}
+<section id="hero">
+    <div class="hero-container">
+        <style>
+        .manoj{
+            color:yellow;
+        }
+    </style>
+    <table border="1">
+        <form method="post" action='/login/'>
+          {%csrf_token%}
+            <div class="form-group">
+              <label for="exampleInputEmail1">username</label>
+              <div class="manoj">
+              <i class="bi bi-person"></i>
+              </div>
+              <input type="text" name="user"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                
+              <label for="exampleInputPassword1">Password</label>
+              <div>
+              <i  style ="color:yellow;" class="bi bi-key"></i>
+              </div>
+              <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            {% if messages %}
+              <ul class="messages">
+              {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+              {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+              {{ message }}
+              </li>
+    {% endfor %}
+</ul>
+{% endif %}
+            
+          </form>
+        </table>
+  </section>
+
+
+
+{%endblock content%}
